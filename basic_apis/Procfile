@@ -1,0 +1,1 @@
+web: gunicorn basic-fast-apis:app --application name basic-fast-apis is given
