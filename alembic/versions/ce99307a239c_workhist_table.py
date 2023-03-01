@@ -6,7 +6,7 @@ Create Date: 2023-02-16 19:22:05.858387
 
 """
 from alembic import op
-from sqlalchemy import INTEGER, VARCHAR, Column, Boolean, DateTime, func
+from sqlalchemy import INTEGER, VARCHAR, Column, Boolean, DateTime, func, ForeignKey
 
 
 # revision identifiers, used by Alembic.
@@ -26,11 +26,11 @@ def upgrade():
         Column('role', VARCHAR, nullable=False),
         Column('desc', VARCHAR),
         Column('is_active',Boolean, default=True),
-        Column('emp_id',INTEGER),
-        #Column('emp_id',INTEGER, ForeignKey('employees.id')),
-        op.create_foreign_key(
-            "fk_emp_id", "workhist",
-            "employees", ["emp_id"], ["id"])
+        # Column('emp_id',INTEGER),
+        Column('emp_id',INTEGER, ForeignKey('employees.id')),
+        # op.create_foreign_key(
+        #     "fk_emp_id", "workhist",
+        #     "employees", ["emp_id"], ["id"])
             
     )
 
